@@ -11,12 +11,13 @@
 - **Configurable:** Control settings like max retries and backoff strategy.
 - **Dead Letter Queue (DLQ):** Terminally failed jobs are moved to a DLQ for manual inspection and retry.
 - **Graceful Shutdown:** Workers can be gracefully shut down, allowing them to finish their current job.
+- **Scheduled Jobs
 
 ## Installation
 
 1.  **Clone the repository:**
     ```bash
-    git clone <repository-url>
+    git clone git@github.com:rohitkamalv/flam.git
     cd queuectl
     ```
 
@@ -70,7 +71,7 @@ node src/index.js list pending
 
 ### `status`
 
-Show a summary of the job queue and worker status.
+Show a summary of the job queue and worker status and pids.
 
 **Usage:**
 ```bash
@@ -130,8 +131,8 @@ node src/index.js config set backoff_base 3
 
 The configuration is stored in `config.json`. You can edit this file directly or use the `config set` command.
 
-- `max_retries`: The maximum number of times a job will be retried before being moved to the DLQ.
-- `backoff_base`: The base for the exponential backoff calculation (`delay = base ^ attempts`).
+- `max-retries`: The maximum number of times a job will be retried before being moved to the DLQ.
+- `backoff-base`: The base for the exponential backoff calculation (`delay = base ^ attempts`).
 
 ## Architecture
 

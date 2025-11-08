@@ -10,7 +10,7 @@ const CONFIG_FILE_PATH = path.join(__dirname, '..', 'config.json');
 function readConfig() {
     try {
         const configFileContent = fs.readFileSync(CONFIG_FILE_PATH, 'utf8');
-        return JSON.parse(configFileContent);
+        return JSON.parse(configFileContent);        
     } catch (error) {
         console.error('Error reading or parsing config.json:', error.message);
         throw error;

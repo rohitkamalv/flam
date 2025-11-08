@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers'; 
 import { initializeDatabase, enqueueJob, getJobsByStatus, getDlqJobs, retryDlqJob, getJobCounts } from "./database.js";
@@ -90,7 +91,7 @@ const argv = yargs(hideBin(process.argv))
 
     .command(
     'config [key]',
-    'Manage application configuration (e.g., max_retries, backoff_base). Use "config set <key> <value>" to change.',
+    'Manage application configuration (e.g., max-retries, backoff-base). Use "config set <key> <value>" to change.',
     (yargs) => {
       yargs.positional('key', {
         describe: 'Optional: Display a specific configuration key. If omitted, shows all config.',
@@ -113,7 +114,7 @@ const argv = yargs(hideBin(process.argv))
         (argv) => {
           try {
             let valueToSet = argv.value;
-            if (argv.key === 'max-retries' || argv.key === 'backoff-base') {
+            if (argv.key === 'max_retries' || argv.key === 'backoff_base') {
                 valueToSet = Number(argv.value);
                 if (isNaN(valueToSet)) {
                     console.error(`Error: Value for '${argv.key}' must be a number.`);
