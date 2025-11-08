@@ -26,7 +26,8 @@
     npm install
     ```
 
-# Working CLI demo : https://drive.google.com/file/d/1s-BemWIHV-mDe0FZvMSesxLWGZku7J7K/view?usp=share_link
+## Working CLI demo : https://drive.google.com/file/d/1s-BemWIHV-mDe0FZvMSesxLWGZku7J7K/view?usp=share_link
+
 
 ## Usage
 
