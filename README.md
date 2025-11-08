@@ -144,3 +144,5 @@ The configuration is stored in `config.json`. You can edit this file directly or
 - **`job-queue.db`**: The SQLite database file.
 - **`config.json`**: The configuration file.
 - **`worker-pids.json`**: Stores the PIDs of running worker processes.
+
+## Working CLI demo : https://drive.google.com/file/d/1s-BemWIHV-mDe0FZvMSesxLWGZku7J7K/view?usp=share_link
