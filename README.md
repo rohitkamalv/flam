@@ -26,6 +26,8 @@
     npm install
     ```
 
+# Working CLI demo : https://drive.google.com/file/d/1s-BemWIHV-mDe0FZvMSesxLWGZku7J7K/view?usp=share_link
+
 ## Usage
 
 The main command is `queuectl`, which you can run using `node src/index.js`.
@@ -145,4 +147,21 @@ The configuration is stored in `config.json`. You can edit this file directly or
 - **`config.json`**: The configuration file.
 - **`worker-pids.json`**: Stores the PIDs of running worker processes.
 
-## Working CLI demo : https://drive.google.com/file/d/1s-BemWIHV-mDe0FZvMSesxLWGZku7J7K/view?usp=share_link
+## Assumptions & Trade-offs
+
+This project was designed with simplicity and ease of use for a single-machine environment. This leads to several trade-offs:
+
+*   **Database**: `SQLite` is used for its simplicity and zero-configuration setup. This is ideal for a self-contained CLI tool but would not be suitable for a high-throughput, distributed system where a more robust client-server database (like PostgreSQL or MySQL) would be required.
+*   **Worker Management**: Worker processes are managed using Node.js's `child_process` module and a simple PID file (`worker-pids.json`). This is straightforward but less resilient than a dedicated process manager like `PM2`, which provides automatic restarts, logging, and monitoring.
+*   **Job Locking**: The system uses a database transaction to lock a job when a worker picks it up. This is a simple and effective mechanism for the current scale but could become a performance bottleneck under very high worker contention.
+*   **Scalability**: The entire system is designed to run on a single machine. It cannot scale horizontally across multiple machines without significant architectural changes.
+*   **Security**: The CLI assumes that the user has the necessary permissions to execute the shell commands. There are no additional security layers to restrict what commands can be enqueued or executed.
+
+## Testing Instructions
+
+The simplest way to verify the functionality of `queuectl` is to run the provided verification script. This script performs an end-to-end test that demonstrates job creation, processing, failure handling, and cleanup.
+
+To run the script:
+```bash
+bash verify.sh
+```
