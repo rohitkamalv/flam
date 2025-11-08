@@ -1,0 +1,4 @@
+{
+    "max-retries": 4,
+    "backoff-base": 3
+}

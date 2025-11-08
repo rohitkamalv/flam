@@ -1,0 +1,8 @@
+node_modules/
+npm-debug.log
+.DS_Store
+gemini.md
+validate.js
+worker-pids.json
+job-queue.db
+package-lock.json
